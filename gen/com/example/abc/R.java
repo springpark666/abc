@@ -94,12 +94,13 @@ public final class R {
         public static final int add_friend=0x7f070001;
         public static final int call=0x7f070002;
         public static final int call2=0x7f070003;
-        public static final int home_page=0x7f070004;
-        public static final int main=0x7f070005;
-        public static final int menu=0x7f070006;
-        public static final int message=0x7f070007;
-        public static final int my_info=0x7f070008;
-        public static final int setting=0x7f070009;
+        public static final int detail_entry=0x7f070004;
+        public static final int home_page=0x7f070005;
+        public static final int main=0x7f070006;
+        public static final int menu=0x7f070007;
+        public static final int message=0x7f070008;
+        public static final int my_info=0x7f070009;
+        public static final int setting=0x7f07000a;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
@@ -109,6 +110,7 @@ public final class R {
         public static final int title_activity_add_friend=0x7f050003;
         public static final int title_activity_call=0x7f050006;
         public static final int title_activity_call2=0x7f05000a;
+        public static final int title_activity_detail_entry=0x7f05000d;
         public static final int title_activity_feed=0x7f05000b;
         public static final int title_activity_home_page=0x7f050004;
         public static final int title_activity_menu=0x7f050009;

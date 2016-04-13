@@ -67,12 +67,13 @@ public class FeedActivity extends Activity{
 		if (requestCode == REQUEST_ADD) {
 	        if (resultCode == RESULT_OK) {
 	        	Bundle bundle=intent.getExtras();
-	        	if("true".equals(bundle.getBoolean("addsuccess"))){
-	        		String id=UUID.randomUUID().toString();
+	        	if(bundle.getBoolean("addsuccess")){
+	        		String id=bundle.getString("id");
 	        		String title=bundle.getString("title");
 	        		String content=bundle.getString("content");
 	        		feedService.add(id,title,content);
 	        		Map<String,Object> map=new HashMap<String, Object>();
+	        		map.put("id",id);
 	        		map.put("title",title);
 	        		map.put("content",content);
 	        		data.add(map);

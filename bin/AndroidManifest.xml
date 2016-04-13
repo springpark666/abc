@@ -62,6 +62,10 @@
             android:name="com.example.abc.AddEntryActivity"
             android:label="@string/title_activity_add_entry" >
         </activity>
+        <activity
+            android:name="com.example.abc.DetailEntryActivity"
+            android:label="@string/title_activity_detail_entry" >
+        </activity>
     </application>
 
 </manifest>

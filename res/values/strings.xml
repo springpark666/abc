@@ -14,5 +14,6 @@
     <string name="title_activity_call2">Call2Activity</string>
     <string name="title_activity_feed">数据库操作</string>
     <string name="title_activity_add_entry">AddEntryActivity</string>
+    <string name="title_activity_detail_entry">DetailEntryActivity</string>
 
 </resources>

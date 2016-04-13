@@ -51,14 +51,17 @@ public class AddEntryActivity extends Activity {
 		}
 		
 		FeedService feedService=new FeedService(getApplicationContext());
-		feedService.add(UUID.randomUUID().toString(),nicheng,personsign);
+		String id=UUID.randomUUID().toString();
+		feedService.add(id,nicheng,personsign);
 		
 		Toast.makeText(getApplicationContext(),"添加成功",Toast.LENGTH_SHORT).show();
 		
 		Intent intent=new Intent(getApplicationContext(),FeedActivity.class);
 		intent.putExtra("addsuccess",true);
+		intent.putExtra("id",id);
 		intent.putExtra("title",nicheng);
 		intent.putExtra("content",personsign);
+		this.setResult(RESULT_OK,intent);
 		this.finish();
 		
 	}
