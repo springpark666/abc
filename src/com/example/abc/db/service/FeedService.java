@@ -58,9 +58,8 @@ public class FeedService {
 		String sortOrder =
 		    FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID + " DESC";
 		
-		String selection=FeedReaderContract.FeedEntry._ID+" = ?";
+		String selection=FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID+" = ?";
 		String []selectionArgs={id};
-
 		Cursor c = db.query(
 		    FeedReaderContract.FeedEntry.TABLE_NAME,  // The table to query
 		    projection,                               // The columns to return
@@ -99,6 +98,7 @@ public class FeedService {
 		ContentValues values = new ContentValues();
 		values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE,title);
 
+		values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE,content);
 		// Which row to update, based on the ID
 		String selection = FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID + " = ?";
 		String[] selectionArgs = { id };

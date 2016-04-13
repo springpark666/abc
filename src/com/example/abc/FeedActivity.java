@@ -11,6 +11,7 @@ import com.example.abc.db.service.FeedService;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,9 @@ public class FeedActivity extends Activity{
 	private List<Map<String,Object>> data=null;
 	private SimpleAdapter simpleAdapter=null;
 	private static int REQUEST_ADD=0;
+	private static int REQUEST_DELETE=1;
+	private static int REQUEST_UPDATE=2;
+	private int index;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,8 +57,27 @@ public class FeedActivity extends Activity{
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View v, int arg2,
 					long arg3) {
-				Toast toast=Toast.makeText(getApplicationContext(),((TextView)v.findViewById(R.id.feedid)).getText().toString(),Toast.LENGTH_SHORT);
+				String id=((TextView)v.findViewById(R.id.feedid)).getText().toString();
+				Toast toast=Toast.makeText(getApplicationContext(),id,Toast.LENGTH_SHORT);
 			    toast.show();
+			    
+			    index=arg2;
+			    
+//			   Intent intent=new Intent(getApplicationContext(),DetailEntryActivity.class);
+//			    
+//			   Bundle bundle=new Bundle();
+//			   bundle.putString("id",id);
+//			    
+//			   intent.putExtras(bundle);
+//			   startActivityForResult(intent,REQUEST_DELETE);//删除返回
+			    
+			    Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
+			    Bundle bundle=new Bundle();
+				   bundle.putString("id",id);
+				    
+				   intent.putExtras(bundle);
+				   startActivityForResult(intent,REQUEST_ADD);//删除返回
+			   
 			}
 		});
 	}
@@ -71,17 +94,30 @@ public class FeedActivity extends Activity{
 	        		String id=bundle.getString("id");
 	        		String title=bundle.getString("title");
 	        		String content=bundle.getString("content");
-	        		feedService.add(id,title,content);
 	        		Map<String,Object> map=new HashMap<String, Object>();
-	        		map.put("id",id);
 	        		map.put("title",title);
 	        		map.put("content",content);
 	        		data.add(map);
 	        		simpleAdapter.notifyDataSetChanged();
+	        	}else if(bundle.getBoolean("updatesuccess")){
+	        		String title=bundle.getString("title");
+	        		String content=bundle.getString("content");
+	        		Map<String,Object> map=data.get(index);
+	        		map.put("title",title);
+	        		map.put("content",content);
+	        		
+	        		simpleAdapter.notifyDataSetChanged();
 	        	}
 	        }
+	    }else if(requestCode==REQUEST_DELETE){
+	    	 if (resultCode == RESULT_OK) {
+		        	Bundle bundle=intent.getExtras();
+		        	if(bundle.getBoolean("deletesuccess")){
+		        		data.remove(index);
+		        		simpleAdapter.notifyDataSetChanged();
+		        	}
+	    	 }
 	    }
-
 	}
 
 	public void back(View v){
