@@ -1,0 +1,188 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CallActivity"
+    android:background="#252C39"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+     >
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#474D58"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+         android:gravity="center_horizontal"
+        >
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="state"
+            android:textColor="#bababa"
+            android:textSize="22sp"
+            android:visibility="visible"
+            />
+        <Chronometer 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chronometer"
+            android:textColor="#fff"
+            android:visibility="invisible"
+            />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:text="duration"
+            android:textSize="15dp"
+            android:visibility="visible"
+            />
+        
+    </LinearLayout>
+    
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        >
+        
+        <ImageView 
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/default_useravatar"
+            />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="张三"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            />
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        >
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <LinearLayout 
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+                
+                <ImageView 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_mute_normal"
+                    android:scaleType="fitCenter"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#666167"
+                    android:gravity="center"
+                    android:text="静音"
+                     />
+                
+            </LinearLayout>
+            
+            <LinearLayout 
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                >
+                
+                <ImageView 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_speaker_normal"
+                    android:scaleType="fitCenter"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#666167"
+                    android:gravity="center"
+                    android:text="免提"
+                     />
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+        <FrameLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            >
+            
+            <Button 
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#D84A4B"
+                android:text="挂断"
+                android:textColor="#fff"
+                android:visibility="invisible"
+                />
+            
+            
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <Button 
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="#D84A4B"
+                android:text="挂断"
+                android:layout_weight="1"
+                android:textColor="#fff"
+                android:visibility="visible"
+                />
+                
+                <Button 
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:background="#D84A4B"
+                android:layout_weight="1"
+                android:layout_marginLeft="30dp"
+                android:text="接听"
+                android:textColor="#fff"
+                android:visibility="visible"
+                />
+                
+                
+            </LinearLayout>
+            
+        </FrameLayout>
+        
+        
+    </LinearLayout>
+    
+    
+</LinearLayout>

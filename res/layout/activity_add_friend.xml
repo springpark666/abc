@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F2F2F2"
+    >
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#4EBCD3"
+        android:paddingLeft="15dp"
+        >
+        
+        <ImageView 
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/mm_title_back"
+            />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:text="添加好友"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            />
+        
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+             android:text="查找"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            android:layout_marginRight="13dp"
+            />
+        
+    </RelativeLayout>
+    
+    <EditText 
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:hint="用户名"
+        android:layout_margin="10dp"
+        android:textColorHint="#b3b3b3"
+        android:textSize="18sp"
+        />
+    
+</LinearLayout>
