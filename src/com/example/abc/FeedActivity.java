@@ -98,12 +98,12 @@ public class FeedActivity extends Activity{
 			    toast.show();
 			    
 			    index=arg2;
-			    
+			    Log.e("mmm","===================index====="+index);
 			   Intent intent=new Intent(getApplicationContext(),DetailEntryActivity.class);
 			    
 			   Bundle bundle=new Bundle();
 			   bundle.putString("id",id);
-			    
+			   Log.e("mmm","===================id====="+id);
 			   intent.putExtras(bundle);
 			   startActivityForResult(intent,REQUEST_DELETE);//删除返回
 			    
@@ -239,7 +239,9 @@ public class FeedActivity extends Activity{
 	    	 if (resultCode == RESULT_OK) {
 		        	Bundle bundle=intent.getExtras();
 		        	if(bundle.getBoolean("deletesuccess")){
+		        		Log.e("mmm","===================data size"+data.size());
 		        		data.remove(index);
+		        		Log.e("mmm","===================data size"+data.size());
 		        		simpleAdapter.notifyDataSetChanged();
 		        	}
 	    	 }

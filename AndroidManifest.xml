@@ -66,6 +66,10 @@
             android:name="com.example.abc.DetailEntryActivity"
             android:label="@string/title_activity_detail_entry" >
         </activity>
+        <activity
+            android:name="com.example.abc.AlertActivity"
+            android:label="@string/title_activity_alert" >
+        </activity>
     </application>
 
 </manifest>

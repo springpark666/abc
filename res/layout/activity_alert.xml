@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AlertActivity" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#145895"
+            android:text="提示"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            />
+        
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="#fff"
+            android:text="这个就是自定义的提示框"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:gravity="center"
+            />
+        
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="#E7E7E7"
+            >
+            
+            <Button 
+                android:layout_width="114dp"
+                android:layout_height="40dp"
+                android:text="确定"
+                android:background="#FC8537"
+                android:textColor="#fff"
+                android:layout_marginRight="20dp"
+                />
+            
+            <Button 
+                android:layout_width="114dp"
+                android:layout_height="40dp"
+                android:text="取消"
+                android:background="#CDCDCD"
+                android:textColor="#fff"
+                />
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>

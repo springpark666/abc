@@ -2,6 +2,7 @@ package com.example.abc;
 import com.example.abc.db.service.FeedService;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -43,27 +44,28 @@ public class DetailPopWindow extends PopupWindow {
 	        this.setAnimationStyle(R.style.AnimationPreview);
 	        
 	        
-//	        TextView tv_delete=(TextView)context.findViewById(R.id.bt_delete);
-//	        TextView tv_friend=(TextView)context.findViewById(R.id.bt_friend);
-//	        
-//	        tv_delete.setOnClickListener(new OnClickListener() {
-//				@Override
-//				public void onClick(View arg0) {
-//					
-//				}
-//			});
-//	        
-//	        tv_friend.setOnClickListener(new OnClickListener() {
-//				@Override
-//				public void onClick(View arg0) {
-////					Intent intent=new Intent(context,DetailEntryActivity.class);
-////					Bundle bundle=new Bundle();
-////					bundle.putString("id",eid);
-////					context.startActivity(intent);
-////					DetailPopWindow.this.dismiss();
-//				}
-//			});
-//	        
+	        TextView tv_delete=(TextView)context.findViewById(R.id.bt_delete);
+	        TextView tv_friend=(TextView)context.findViewById(R.id.bt_friend);
+	        
+	        tv_delete.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					DetailEntryActivity activity=new DetailEntryActivity();
+					activity.deleteWarn();
+				}
+			});
+	        
+	        tv_friend.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+//					Intent intent=new Intent(context,DetailEntryActivity.class);
+//					Bundle bundle=new Bundle();
+//					bundle.putString("id",eid);
+//					context.startActivity(intent);
+//					DetailPopWindow.this.dismiss();
+				}
+			});
+	        
 	        
 	}
 	

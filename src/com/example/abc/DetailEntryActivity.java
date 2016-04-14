@@ -5,12 +5,16 @@ import com.example.abc.db.service.FeedService;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetailEntryActivity extends Activity {
 
@@ -59,6 +63,24 @@ public class DetailEntryActivity extends Activity {
 	
 	public void back(View v){
 		this.finish();
+	}
+	
+	public  void deleteWarn(){
+		new AlertDialog.Builder(DetailEntryActivity.this).setTitle("提醒").setMessage("确定要删除吗？")
+		.setPositiveButton("确定",new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		}).setNegativeButton("11", new OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				Toast.makeText(getApplicationContext(),"click cancle",Toast.LENGTH_SHORT).show();
+			}
+		}).show();
 	}
 	
 	public void delete(View v){
