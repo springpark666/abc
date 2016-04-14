@@ -80,7 +80,6 @@
         ptr:ptrMode="both" 
         ptr:ptrListViewExtrasEnabled="true"
         ptr:ptrAnimationStyle="rotate"
-        ptr:ptrDrawable="@drawable/ic_launcher"
         />  
 
 </LinearLayout>

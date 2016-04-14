@@ -56,7 +56,7 @@ public class FeedActivity extends Activity{
 		setContentView(R.layout.activity_listview);
 		feedService=new FeedService(getApplicationContext());
 		lv=(PullToRefreshListView)findViewById(R.id.pull_to_refresh_listview);
-		setPullToRefreshLable();
+		//setPullToRefreshLable();
 		//所有数据
 		data=new ArrayList<Map<String,Object>>();
 		
@@ -99,20 +99,20 @@ public class FeedActivity extends Activity{
 			    
 			    index=arg2;
 			    
-//			   Intent intent=new Intent(getApplicationContext(),DetailEntryActivity.class);
-//			    
-//			   Bundle bundle=new Bundle();
-//			   bundle.putString("id",id);
-//			    
-//			   intent.putExtras(bundle);
-//			   startActivityForResult(intent,REQUEST_DELETE);//删除返回
+			   Intent intent=new Intent(getApplicationContext(),DetailEntryActivity.class);
 			    
-			    Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
-			    Bundle bundle=new Bundle();
-				   bundle.putString("id",id);
-				    
-				   intent.putExtras(bundle);
-				   startActivityForResult(intent,REQUEST_ADD);//删除返回
+			   Bundle bundle=new Bundle();
+			   bundle.putString("id",id);
+			    
+			   intent.putExtras(bundle);
+			   startActivityForResult(intent,REQUEST_DELETE);//删除返回
+			    
+//			    Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
+//			    Bundle bundle=new Bundle();
+//				   bundle.putString("id",id);
+//				    
+//				   intent.putExtras(bundle);
+//				   startActivityForResult(intent,REQUEST_ADD);//删除返回
 			   
 			}
 		});
@@ -139,7 +139,6 @@ public class FeedActivity extends Activity{
 				pullflag=2;//上拉
 				Toast.makeText(getApplicationContext(), "onPullUpToRefresh", Toast.LENGTH_SHORT).show();
 				new GetDataTask().execute();
-
 			}
 			
 		});

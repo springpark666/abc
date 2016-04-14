@@ -6,8 +6,10 @@ import com.example.abc.db.service.FeedService;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetailEntryActivity extends Activity {
@@ -15,10 +17,13 @@ public class DetailEntryActivity extends Activity {
 	private TextView tv_name,tv_gxqm;
 	private String eid;
 	private FeedService feedService=null;
+	private ImageView iv_more;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail_entry);
+		
+		iv_more=(ImageView)findViewById(R.id.icon_more);
 		
 		
 		Intent intent=getIntent();
@@ -39,6 +44,12 @@ public class DetailEntryActivity extends Activity {
 		
 	}
 
+	public void showmore(View v){
+		Log.e("mmm","=======================展现菜单");
+		DetailPopWindow detailPopWindow=new DetailPopWindow(DetailEntryActivity.this,eid);
+		detailPopWindow.showPopupWindow(iv_more);
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -9,10 +9,12 @@ package com.example.abc;
 
 public final class R {
     public static final class anim {
-        public static final int slide_in_from_bottom=0x7f040000;
-        public static final int slide_in_from_top=0x7f040001;
-        public static final int slide_out_to_bottom=0x7f040002;
-        public static final int slide_out_to_top=0x7f040003;
+        public static final int fade_in=0x7f040000;
+        public static final int fade_out=0x7f040001;
+        public static final int slide_in_from_bottom=0x7f040002;
+        public static final int slide_in_from_top=0x7f040003;
+        public static final int slide_out_to_bottom=0x7f040004;
+        public static final int slide_out_to_top=0x7f040005;
     }
     public static final class attr {
         /**  BELOW HERE ARE DEPRECEATED. DO NOT USE. 
@@ -196,25 +198,28 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int LinearLayout1=0x7f05000c;
-        public static final int action_settings=0x7f050030;
+        public static final int action_settings=0x7f050033;
         public static final int back=0x7f050012;
         public static final int both=0x7f050003;
         public static final int bt_back=0x7f05000d;
+        public static final int bt_delete=0x7f050029;
+        public static final int bt_friend=0x7f05002a;
         public static final int content=0x7f050023;
         public static final int disabled=0x7f050000;
         public static final int eid=0x7f05000f;
         public static final int feedid=0x7f050021;
-        public static final int fl_inner=0x7f05002b;
+        public static final int fl_inner=0x7f05002e;
         public static final int flip=0x7f050008;
         public static final int gridview=0x7f050009;
         public static final int gxqm=0x7f05001b;
         public static final int gxqmvalue=0x7f05001c;
         public static final int headimage=0x7f050017;
+        public static final int icon_more=0x7f050016;
         public static final int image1=0x7f05001e;
         public static final int image2=0x7f05001f;
-        public static final int imageView1=0x7f050016;
+        public static final int imageView1=0x7f050026;
         public static final int iv_back=0x7f050013;
-        public static final int line=0x7f05002a;
+        public static final int line=0x7f05002d;
         public static final int manualOnly=0x7f050004;
         public static final int msg_name=0x7f050022;
         public static final int name=0x7f050018;
@@ -225,21 +230,21 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
         public static final int pullUpFromBottom=0x7f050006;
-        public static final int pull_to_refresh_image=0x7f05002c;
+        public static final int pull_to_refresh_image=0x7f05002f;
         public static final int pull_to_refresh_listview=0x7f050025;
-        public static final int pull_to_refresh_progress=0x7f05002d;
-        public static final int pull_to_refresh_sub_text=0x7f05002f;
-        public static final int pull_to_refresh_text=0x7f05002e;
+        public static final int pull_to_refresh_progress=0x7f050030;
+        public static final int pull_to_refresh_sub_text=0x7f050032;
+        public static final int pull_to_refresh_text=0x7f050031;
         public static final int re_avatar=0x7f050020;
-        public static final int region=0x7f050026;
-        public static final int regionvalue=0x7f050027;
+        public static final int region=0x7f050027;
+        public static final int regionvalue=0x7f050028;
         public static final int rotate=0x7f050007;
         public static final int scrollview=0x7f05000b;
         public static final int seximage=0x7f050019;
         public static final int textView1=0x7f050015;
         public static final int tv_title=0x7f05000e;
-        public static final int tv_unread=0x7f050028;
-        public static final int view=0x7f050029;
+        public static final int tv_unread=0x7f05002b;
+        public static final int view=0x7f05002c;
         public static final int view_temp=0x7f050014;
         public static final int vvv=0x7f050024;
         public static final int webview=0x7f05000a;
@@ -301,6 +306,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int title_activity_setting=0x7f07000b;
     }
     public static final class style {
+        /**  右上角popupwindow 
+         */
+        public static final int AnimationPreview=0x7f080002;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
