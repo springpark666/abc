@@ -59,7 +59,7 @@
         
         
     </RelativeLayout>
-    
+    <!-- 
     <ListView 
         android:id="@+id/lv"
         android:layout_width="match_parent"
@@ -67,6 +67,20 @@
         android:divider="#cccccc"
         android:dividerHeight="0.1dp"
         android:layout_marginBottom="30dp"
-        ></ListView>
+        ></ListView> -->
+    
+   <com.handmark.pulltorefresh.library.PullToRefreshListView
+       xmlns:ptr="http://schemas.android.com/apk/res-auto"
+       android:id="@+id/pull_to_refresh_listview"  
+       android:layout_height="fill_parent"  
+        android:layout_width="fill_parent" 
+         android:divider="#50000000"
+        android:dividerHeight="2dp"
+        android:smoothScrollbar="true"
+        ptr:ptrMode="both" 
+        ptr:ptrListViewExtrasEnabled="true"
+        ptr:ptrAnimationStyle="rotate"
+        ptr:ptrDrawable="@drawable/ic_launcher"
+        />  
 
 </LinearLayout>

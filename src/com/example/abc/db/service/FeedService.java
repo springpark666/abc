@@ -157,4 +157,26 @@ public class FeedService {
 		c.close();
 		return list;
 	}
+	
+	
+	
+	public List<Feed> getListWithPage(int page,int count){
+		int start=(page-1)*count;
+		Log.e("mmm","分页数据查询");
+		SQLiteDatabase db = mDbHelper.getReadableDatabase();
+		String sql = "select * from entry limit ?,?";
+		String selectionArgs[]= new String[]{String.valueOf(start), String.valueOf(count)};
+		Cursor c = db.rawQuery(sql,selectionArgs);
+		List<Feed> list=new ArrayList<Feed>();
+		while(c.moveToNext()){
+			Feed feed=new Feed();
+			feed.setId(c.getString(1));
+			feed.setTitle(c.getString(2));
+			feed.setContent(c.getString(3));
+			list.add(feed);
+		}
+		c.close();
+		return list;
+	}
+	
 }

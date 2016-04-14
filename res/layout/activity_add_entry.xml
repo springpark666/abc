@@ -34,6 +34,7 @@
             />
         
         <TextView 
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="添加"
@@ -87,7 +88,7 @@
             android:id="@+id/nicheng"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/wp"
+            android:background="@drawable/entry_text"
             android:layout_marginLeft="60dp"
             android:singleLine="true"
             />
@@ -104,7 +105,7 @@
             android:id="@+id/personsign"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/wp"
+            android:background="@drawable/entry_text"
             android:layout_marginLeft="60dp"
             />
     </LinearLayout>

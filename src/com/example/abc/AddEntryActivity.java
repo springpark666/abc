@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class AddEntryActivity extends Activity {
 
-	private TextView tv_eid;
+	private TextView tv_eid,tv_title;
 	private EditText et_nicheng,et_personsign;
 	private FeedService feedService=null;
 	@Override
@@ -26,6 +26,8 @@ public class AddEntryActivity extends Activity {
 		setContentView(R.layout.activity_add_entry);
 		
 		tv_eid=(TextView)findViewById(R.id.eid);
+		tv_title=(TextView)findViewById(R.id.tv_title);
+		
 		et_nicheng=(EditText)findViewById(R.id.nicheng);
 		et_personsign=(EditText)findViewById(R.id.personsign);
 		
@@ -43,6 +45,8 @@ public class AddEntryActivity extends Activity {
 				
 				et_nicheng.setText(feed.getTitle());
 				et_personsign.setText(feed.getContent());
+				
+				tv_title.setText("修改");
 			}
 			
 		}
