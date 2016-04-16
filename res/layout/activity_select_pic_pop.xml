@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectPicPopActivity" 
+    android:id="@+id/activity_select_pic_pop"
+    >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#E7E4DA"
+        >
+        
+        <Button 
+            android:id="@+id/bt_shipin"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#E7E4DA"
+            android:text="小视频"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:gravity="center"
+            />
+        
+          <View 
+              android:layout_width="match_parent"
+              android:layout_height="0.1dp"
+              android:background="#EBEBEB"
+              />
+          
+          <Button 
+            android:id="@+id/bt_paizhao"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#E7E4DA"
+            android:text="拍照"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:gravity="center"
+            />
+        
+          <View 
+              android:layout_width="match_parent"
+              android:layout_height="0.1dp"
+              android:background="#EBEBEB"
+              />
+          
+          <Button 
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#E7E4DA"
+            android:text="从手机相册选择"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:gravity="center"
+            />
+        
+          <View 
+              android:layout_width="match_parent"
+              android:layout_height="6dp"
+              android:background="#EBEBEB"
+              />
+          
+          <Button 
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#E7E4DA"
+            android:text="取消"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:gravity="center"
+            />
+        
+    </LinearLayout>
+
+</RelativeLayout>

@@ -22,5 +22,26 @@
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
+    
+    <style name="AnimBottom" parent="@android:style/Animation">
+         <item name="android:windowEnterAnimation">@anim/menu_fadein</item>
+        <item name="android:windowExitAnimation">@anim/menu_fadeout</item>
+    </style>
+    
+    <style  name="MyDialogStyleBottom" parent="android:Theme.Dialog">
+        
+        <item name="android:windowAnimationStyle">@style/AnimBottom</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    
+     <!-- PopupWindow窗口动画 -->
+    <style name="MenuAnimationFade">
+        <item name="android:windowEnterAnimation">@anim/menu_fadein</item>
+        <item name="android:windowExitAnimation">@anim/menu_fadeout</item>
+    </style>
 
 </resources>

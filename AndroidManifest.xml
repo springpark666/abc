@@ -74,6 +74,15 @@
             android:name="com.example.abc.GreetActivity"
             android:label="@string/title_activity_greet" >
         </activity>
+        <activity
+            android:name="com.example.abc.SelectPicPopActivity"
+            android:label="@string/title_activity_select_pic_pop"
+            android:theme="@style/MyDialogStyleBottom" >
+        </activity>
+        <activity
+            android:name="com.example.abc.MenuBottomActivity"
+            android:label="@string/title_activity_menu_bottom" >
+        </activity>
     </application>
 
 </manifest>

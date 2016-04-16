@@ -17,23 +17,37 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase.State;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View.OnClickListener;
+import android.view.View.OnCreateContextMenuListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FeedActivity extends Activity{
+public class FeedActivity extends Activity implements OnClickListener{
 	private PullToRefreshListView lv;
 	private LinkedList<String> mListItems;
 	private ArrayAdapter<String> mAdapter;
@@ -50,6 +64,12 @@ public class FeedActivity extends Activity{
 	private int pullflag=0;
 	private int curpage=1;
 	private int pagesize=5;
+	private String selectId;
+	private PopupWindow popupWindow=null;
+	private TextView hideView=null;
+	
+	private Button bt_shipin,bt_paizhao;
+	private View view;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,6 +84,8 @@ public class FeedActivity extends Activity{
 		
 		String []from={"id","title","content"};
 		int []to={R.id.feedid,R.id.msg_name,R.id.content};
+		
+		hideView=(TextView)findViewById(R.id.hideView);
 		
 		
 		
@@ -80,6 +102,15 @@ public class FeedActivity extends Activity{
 		actualListView.setAdapter(simpleAdapter);
 		
 		
+		lv.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+			@Override
+			public void onCreateContextMenu(ContextMenu menu, View arg1,
+					ContextMenuInfo arg2) {
+				menu.add(0, 0, 0,"添加");
+				menu.add(0,1,0,"删除");
+				menu.add(0,2,0,"查看资料");
+			}
+		});
 		
 		
 		
@@ -88,24 +119,17 @@ public class FeedActivity extends Activity{
 		
 		
 		
-		lv.setOnItemClickListener(new OnItemClickListener() {
+		actualListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View v, int arg2,
 					long arg3) {
 				String id=((TextView)v.findViewById(R.id.feedid)).getText().toString();
-				Toast toast=Toast.makeText(getApplicationContext(),id,Toast.LENGTH_SHORT);
-			    toast.show();
 			    
-			    index=arg2;
-			    Log.e("mmm","===================index====="+index);
-			   Intent intent=new Intent(getApplicationContext(),DetailEntryActivity.class);
-			    
-			   Bundle bundle=new Bundle();
-			   bundle.putString("id",id);
-			   Log.e("mmm","===================id====="+id);
-			   intent.putExtras(bundle);
-			   startActivityForResult(intent,REQUEST_DELETE);//删除返回
+				
+				index=arg2-1;
+				
+			    detail(id);
 			    
 //			    Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
 //			    Bundle bundle=new Bundle();
@@ -114,6 +138,20 @@ public class FeedActivity extends Activity{
 //				   intent.putExtras(bundle);
 //				   startActivityForResult(intent,REQUEST_ADD);//删除返回
 			   
+			}
+		});
+		
+		lv.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View v,
+					int arg2, long arg3) {
+				String id=((TextView)v.findViewById(R.id.feedid)).getText().toString();
+				index=arg2-1;
+				selectId=id;
+				Log.e("mmm","long click event"+arg2);
+				
+				return false;
 			}
 		});
 		
@@ -142,7 +180,58 @@ public class FeedActivity extends Activity{
 			}
 			
 		});
+		
+		
+		
+		
+		LayoutInflater inflater = LayoutInflater.from(this);
+		view=inflater.inflate(R.layout.activity_select_pic_pop, null);
+		view.setFocusableInTouchMode(true);
+		
+		bt_shipin=(Button)view.findViewById(R.id.bt_shipin);
+		bt_paizhao=(Button)view.findViewById(R.id.bt_paizhao);
+		bt_shipin.setOnClickListener(this);
+		bt_paizhao.setOnClickListener(this);
+		
+		
+		popupWindow=new PopupWindow(view, LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT, true);
+		popupWindow.setAnimationStyle(R.style.MyDialogStyleBottom);
+		popupWindow.setBackgroundDrawable(new BitmapDrawable());
+		
+		
 
+	}
+	
+	private void detail(String id){
+		   Log.e("mmm","===================index====="+index);
+		   Intent intent=new Intent(getApplicationContext(),DetailEntryActivity.class);
+		   Bundle bundle=new Bundle();
+		   bundle.putString("id",id);
+		   Log.e("mmm","===================id====="+id);
+		   intent.putExtras(bundle);
+		   startActivityForResult(intent,REQUEST_DELETE);//删除返回
+	}
+	
+	
+	@Override
+	public boolean onContextItemSelected(MenuItem item){
+		AdapterView.AdapterContextMenuInfo info=(AdapterContextMenuInfo)item.getMenuInfo();
+		switch (item.getItemId()) {
+		case 0://添加
+			Toast.makeText(FeedActivity.this,"点击了添加",Toast.LENGTH_SHORT).show();
+			add(null);
+			break;
+		case 1://删除
+			Toast.makeText(FeedActivity.this,"点击了删除",Toast.LENGTH_SHORT).show();
+			break;
+		case 2://查看资料
+			Toast.makeText(FeedActivity.this,"点击了查看资料",Toast.LENGTH_SHORT).show();
+			detail(selectId);
+			break;
+		default:
+			break;
+		}
+		return super.onContextItemSelected(item);
 	}
 	
 	private void setPullToRefreshLable() {
@@ -263,8 +352,41 @@ public class FeedActivity extends Activity{
 //		
 //		simpleAdapter.notifyDataSetChanged();
 		
-		Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
-		startActivityForResult(intent, REQUEST_ADD);
+		//Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
+		//startActivityForResult(intent, REQUEST_ADD);
 		
+		//Intent intent=new Intent(FeedActivity.this,SelectPicPopActivity.class);
+		//startActivity(intent);
+		
+		changePopupWindowState();
 	}
+	
+	private void changePopupWindowState() {
+        if (popupWindow.isShowing()) {
+            // 隐藏窗口，如果设置了点击窗口外消失，则不需要此方式隐藏
+        	popupWindow.dismiss();
+        } else {
+            // 弹出窗口显示内容视图,默认以锚定视图的左下角为起点，这里为点击按钮
+        	popupWindow.showAtLocation(hideView, Gravity.BOTTOM, 0, 0);
+        }
+    }
+	
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.bt_shipin:
+			Toast.makeText(getApplicationContext(),"点击了小视频",Toast.LENGTH_SHORT).show();
+			changePopupWindowState();
+			break;
+		case R.id.bt_paizhao:
+			Toast.makeText(getApplicationContext(),"点击了拍照",Toast.LENGTH_SHORT).show();
+			changePopupWindowState();
+			break;
+
+		default:
+			break;
+		}
+	}
+
 }
