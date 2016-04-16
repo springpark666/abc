@@ -16,5 +16,6 @@
     <string name="title_activity_add_entry">AddEntryActivity</string>
     <string name="title_activity_detail_entry">DetailEntryActivity</string>
     <string name="title_activity_alert">AlertActivity</string>
+    <string name="title_activity_greet">GreetActivity</string>
 
 </resources>

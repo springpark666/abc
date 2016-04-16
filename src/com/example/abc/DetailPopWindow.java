@@ -3,7 +3,10 @@ import com.example.abc.db.service.FeedService;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DetailPopWindow extends PopupWindow {
 
@@ -44,25 +48,72 @@ public class DetailPopWindow extends PopupWindow {
 	        this.setAnimationStyle(R.style.AnimationPreview);
 	        
 	        
-	        TextView tv_delete=(TextView)context.findViewById(R.id.bt_delete);
-	        TextView tv_friend=(TextView)context.findViewById(R.id.bt_friend);
+	        TextView tv_delete=(TextView)conentView.findViewById(R.id.bt_delete);
+	        TextView tv_friend=(TextView)conentView.findViewById(R.id.bt_friend);
 	        
 	        tv_delete.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
-					DetailEntryActivity activity=new DetailEntryActivity();
-					activity.deleteWarn();
+					Log.e("mmm","点击了删除按钮");
+				  
+				  DetailPopWindow.this.dismiss();
+				  
+				  Builder builder =	new AlertDialog.Builder(context).setTitle("提醒");
+				  builder.setMessage("确定要删除吗?");
+				  builder.setPositiveButton("确定",new DialogInterface.OnClickListener(){
+					  @Override
+						public void onClick(DialogInterface dialog, int which) {
+						  Toast.makeText(context,"click enter",Toast.LENGTH_SHORT).show();
+						}
+				  });
+				  
+				  builder.setNegativeButton("取消",new DialogInterface.OnClickListener(){
+					  @Override
+						public void onClick(DialogInterface dialog, int which) {
+						  Toast.makeText(context,"click cancle",Toast.LENGTH_SHORT).show();
+						}
+				  });
+					
+				  builder.show();
 				}
 			});
 	        
 	        tv_friend.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
+					Log.e("mmm","eid===="+eid);
 //					Intent intent=new Intent(context,DetailEntryActivity.class);
 //					Bundle bundle=new Bundle();
 //					bundle.putString("id",eid);
+//					intent.putExtras(bundle);
 //					context.startActivity(intent);
 //					DetailPopWindow.this.dismiss();
+					
+					
+					 
+					  DetailPopWindow.this.dismiss();
+					  
+					  Builder builder =	new AlertDialog.Builder(context).setTitle("提醒");
+					  builder.setMessage("确定要加为好友吗?");
+					  builder.setPositiveButton("确定",new DialogInterface.OnClickListener(){
+						  @Override
+							public void onClick(DialogInterface dialog, int which) {
+							  Toast.makeText(context,"click enter",Toast.LENGTH_SHORT).show();
+							  
+							  Intent intent=new Intent(context,GreetActivity.class);
+							  context.startActivity(intent);
+							}
+					  });
+					  
+					  builder.setNegativeButton("取消",new DialogInterface.OnClickListener(){
+						  @Override
+							public void onClick(DialogInterface dialog, int which) {
+							  Toast.makeText(context,"click cancle",Toast.LENGTH_SHORT).show();
+							}
+					  });
+						
+					  builder.show();
+					
 				}
 			});
 	        

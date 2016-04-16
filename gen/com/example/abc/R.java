@@ -258,15 +258,16 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_call2=0x7f030004;
         public static final int activity_detail_entry=0x7f030005;
         public static final int activity_entry=0x7f030006;
-        public static final int activity_home_page=0x7f030007;
-        public static final int activity_listview=0x7f030008;
-        public static final int activity_main=0x7f030009;
-        public static final int activity_menu=0x7f03000a;
-        public static final int activity_message=0x7f03000b;
-        public static final int activity_my_info=0x7f03000c;
-        public static final int activity_setting=0x7f03000d;
-        public static final int pull_to_refresh_header_horizontal=0x7f03000e;
-        public static final int pull_to_refresh_header_vertical=0x7f03000f;
+        public static final int activity_greet=0x7f030007;
+        public static final int activity_home_page=0x7f030008;
+        public static final int activity_listview=0x7f030009;
+        public static final int activity_main=0x7f03000a;
+        public static final int activity_menu=0x7f03000b;
+        public static final int activity_message=0x7f03000c;
+        public static final int activity_my_info=0x7f03000d;
+        public static final int activity_setting=0x7f03000e;
+        public static final int pull_to_refresh_header_horizontal=0x7f03000f;
+        public static final int pull_to_refresh_header_vertical=0x7f030010;
     }
     public static final class menu {
         public static final int add_entry=0x7f090000;
@@ -275,12 +276,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int call=0x7f090003;
         public static final int call2=0x7f090004;
         public static final int detail_entry=0x7f090005;
-        public static final int home_page=0x7f090006;
-        public static final int main=0x7f090007;
-        public static final int menu=0x7f090008;
-        public static final int message=0x7f090009;
-        public static final int my_info=0x7f09000a;
-        public static final int setting=0x7f09000b;
+        public static final int greet=0x7f090006;
+        public static final int home_page=0x7f090007;
+        public static final int main=0x7f090008;
+        public static final int menu=0x7f090009;
+        public static final int message=0x7f09000a;
+        public static final int my_info=0x7f09000b;
+        public static final int setting=0x7f09000c;
     }
     public static final class string {
         public static final int action_settings=0x7f070007;
@@ -302,6 +304,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int title_activity_call2=0x7f070010;
         public static final int title_activity_detail_entry=0x7f070013;
         public static final int title_activity_feed=0x7f070011;
+        public static final int title_activity_greet=0x7f070015;
         public static final int title_activity_home_page=0x7f07000a;
         public static final int title_activity_menu=0x7f07000f;
         public static final int title_activity_message=0x7f07000d;

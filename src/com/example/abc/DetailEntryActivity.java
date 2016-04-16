@@ -65,24 +65,6 @@ public class DetailEntryActivity extends Activity {
 		this.finish();
 	}
 	
-	public  void deleteWarn(){
-		new AlertDialog.Builder(DetailEntryActivity.this).setTitle("提醒").setMessage("确定要删除吗？")
-		.setPositiveButton("确定",new OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				finish();
-			}
-		}).setNegativeButton("11", new OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(),"click cancle",Toast.LENGTH_SHORT).show();
-			}
-		}).show();
-	}
-	
 	public void delete(View v){
 		
 		int a=feedService.deleteById(eid);
