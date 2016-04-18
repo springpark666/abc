@@ -82,8 +82,8 @@ public class FeedActivity extends Activity implements OnClickListener{
 		
 		loadData();//加载1页数据
 		
-		String []from={"id","title","content"};
-		int []to={R.id.feedid,R.id.msg_name,R.id.content};
+		String []from={"id","title","content","headimage"};
+		int []to={R.id.feedid,R.id.msg_name,R.id.content,R.id.headimage};
 		
 		hideView=(TextView)findViewById(R.id.hideView);
 		
@@ -106,7 +106,7 @@ public class FeedActivity extends Activity implements OnClickListener{
 			@Override
 			public void onCreateContextMenu(ContextMenu menu, View arg1,
 					ContextMenuInfo arg2) {
-				menu.add(0, 0, 0,"添加");
+				menu.add(0, 0, 0,"修改");
 				menu.add(0,1,0,"删除");
 				menu.add(0,2,0,"查看资料");
 			}
@@ -218,8 +218,14 @@ public class FeedActivity extends Activity implements OnClickListener{
 		AdapterView.AdapterContextMenuInfo info=(AdapterContextMenuInfo)item.getMenuInfo();
 		switch (item.getItemId()) {
 		case 0://添加
-			Toast.makeText(FeedActivity.this,"点击了添加",Toast.LENGTH_SHORT).show();
-			add(null);
+			Toast.makeText(FeedActivity.this,"点击了修改",Toast.LENGTH_SHORT).show();
+			
+		    Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
+		    Bundle bundle=new Bundle();
+			bundle.putString("id",selectId);
+			intent.putExtras(bundle);
+			startActivityForResult(intent,REQUEST_ADD);//
+			
 			break;
 		case 1://删除
 			Toast.makeText(FeedActivity.this,"点击了删除",Toast.LENGTH_SHORT).show();
@@ -257,6 +263,7 @@ public class FeedActivity extends Activity implements OnClickListener{
 			map.put("id",feed.getId());
 			map.put("title",feed.getTitle());
 			map.put("content",feed.getContent());
+			map.put("headimage","/sdcard/abc/"+ feed.getHeadimage());
 			Log.e("mmm","============="+feed.getId());
 			data.add(map);
 		}
@@ -309,17 +316,24 @@ public class FeedActivity extends Activity implements OnClickListener{
 	        		String id=bundle.getString("id");
 	        		String title=bundle.getString("title");
 	        		String content=bundle.getString("content");
+	        		String headimage=bundle.getString("headimage");
 	        		Map<String,Object> map=new HashMap<String, Object>();
+	        		map.put("id",id);
 	        		map.put("title",title);
 	        		map.put("content",content);
+	        		map.put("headimage",headimage);
 	        		data.add(map);
 	        		simpleAdapter.notifyDataSetChanged();
 	        	}else if(bundle.getBoolean("updatesuccess")){
+	        		String id=bundle.getString("id");
 	        		String title=bundle.getString("title");
 	        		String content=bundle.getString("content");
+	        		String headimage=bundle.getString("headimage");
 	        		Map<String,Object> map=data.get(index);
+	        		map.put("id",id);
 	        		map.put("title",title);
 	        		map.put("content",content);
+	        		map.put("headimage",headimage);
 	        		
 	        		simpleAdapter.notifyDataSetChanged();
 	        	}
@@ -352,13 +366,13 @@ public class FeedActivity extends Activity implements OnClickListener{
 //		
 //		simpleAdapter.notifyDataSetChanged();
 		
-		//Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
-		//startActivityForResult(intent, REQUEST_ADD);
+		Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
+		startActivityForResult(intent, REQUEST_ADD);
 		
 		//Intent intent=new Intent(FeedActivity.this,SelectPicPopActivity.class);
 		//startActivity(intent);
 		
-		changePopupWindowState();
+		//changePopupWindowState();
 	}
 	
 	private void changePopupWindowState() {

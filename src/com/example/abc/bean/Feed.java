@@ -5,6 +5,7 @@ public class Feed {
 	private String id;
 	private String title;
 	private String content;
+	private String headimage;
 	public String getId() {
 		return id;
 	}
@@ -22,6 +23,12 @@ public class Feed {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getHeadimage() {
+		return headimage;
+	}
+	public void setHeadimage(String headimage) {
+		this.headimage = headimage;
 	}
 	
 	

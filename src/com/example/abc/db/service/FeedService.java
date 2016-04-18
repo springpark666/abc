@@ -3,10 +3,12 @@ package com.example.abc.db.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.http.entity.StringEntity;
 
 import com.example.abc.bean.Feed;
 import com.example.abc.db.FeedReaderContract;
 import com.example.abc.db.helper.FeedReaderDbHelper;
+import com.example.abc.utils.StringUtils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -53,6 +55,7 @@ public class FeedService {
 		    FeedReaderContract.FeedEntry._ID,
 		    FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE,
 		    FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE,
+		    FeedReaderContract.FeedEntry.COLUMN_NAME_HEADIMAGE
 		    };
 		// How you want the results sorted in the resulting Cursor
 		String sortOrder =
@@ -76,7 +79,7 @@ public class FeedService {
 		feed.setId(c.getString(c.getColumnIndexOrThrow(FeedReaderContract.FeedEntry._ID)));
 		feed.setTitle(c.getString(c.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE)));
 		feed.setContent(c.getString(c.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE)));
-		
+		feed.setHeadimage(c.getString(c.getColumnIndexOrThrow(FeedReaderContract.FeedEntry.COLUMN_NAME_HEADIMAGE)));
 		return feed;
 
 	}
@@ -91,14 +94,24 @@ public class FeedService {
 		return db.delete(FeedReaderContract.FeedEntry.TABLE_NAME,selection,selelectionArgs);
 	}
 	
-	public int updateById(String id,String title,String content){
+	public int updateById(String id,String title,String content,String headimage){
 		SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
 		// New value for one column
 		ContentValues values = new ContentValues();
-		values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE,title);
+		if(!StringUtils.isEmpty(title)){
+			values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE,title);
+		}
+		
 
-		values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE,content);
+		if(!StringUtils.isEmpty(content)){
+			values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE,content);
+		}
+		
+		if(null!=headimage){
+			values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_HEADIMAGE,headimage);
+		}
+		
 		// Which row to update, based on the ID
 		String selection = FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID + " = ?";
 		String[] selectionArgs = { id };
@@ -122,6 +135,7 @@ public class FeedService {
 		    FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID,
 		    FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE,
 		    FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE,
+		    FeedReaderContract.FeedEntry.COLUMN_NAME_HEADIMAGE
 		    };
 		// How you want the results sorted in the resulting Cursor
 		String sortOrder =
@@ -173,6 +187,7 @@ public class FeedService {
 			feed.setId(c.getString(1));
 			feed.setTitle(c.getString(2));
 			feed.setContent(c.getString(3));
+			feed.setHeadimage(c.getString(4));
 			list.add(feed);
 		}
 		c.close();

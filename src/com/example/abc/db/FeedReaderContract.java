@@ -11,6 +11,7 @@ public class FeedReaderContract {
 		public static final String COLUMN_NAME_ENTRY_ID = "eid";
 		public static final String COLUMN_NAME_TITLE = "title";
 		public static final String COLUMN_NAME_SUBTITLE = "subtitle";
+		public static final String COLUMN_NAME_HEADIMAGE="headimage";
 	}
 
 	public static final String TEXT_TYPE = " TEXT";
@@ -21,6 +22,7 @@ public class FeedReaderContract {
 			+ FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID + TEXT_TYPE
 			+ COMMA_SEP + FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE
 			+ TEXT_TYPE + COMMA_SEP + FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE
+			+ TEXT_TYPE+ COMMA_SEP + FeedReaderContract.FeedEntry.COLUMN_NAME_HEADIMAGE
 			+ TEXT_TYPE+ " )";
 	public static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS "
 			+ FeedReaderContract.FeedEntry.TABLE_NAME;
