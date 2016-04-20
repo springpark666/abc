@@ -94,6 +94,25 @@
             android:name="com.example.abc.MenuBottomActivity"
             android:label="@string/title_activity_menu_bottom" >
         </activity>
+        
+        
+        <!-- 广播 -->
+        <receiver android:name="com.example.abc.receiver.TestReceiver">
+            <intent-filter >
+                <action android:name="abcd"/>
+            </intent-filter>
+        </receiver>
+        <!-- end -->
+        
+        <!-- 服务 -->
+        <service android:name="com.example.abc.service.TestService">
+            <intent-filter >
+                <action android:name="testservice"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <!-- end -->
+        
     </application>
 
 </manifest>

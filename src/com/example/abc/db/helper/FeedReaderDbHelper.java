@@ -9,9 +9,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
+	private static FeedReaderDbHelper frd;
 	public FeedReaderDbHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		// TODO Auto-generated constructor stub
+	}
+	
+	public static SQLiteDatabase getInstance(Context context){
+		if(null==frd){
+			frd=new FeedReaderDbHelper(context);
+		}
+		return frd.getReadableDatabase();
 	}
 
 	// If you change the database schema, you must increment the database

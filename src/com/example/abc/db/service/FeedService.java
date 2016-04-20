@@ -18,22 +18,23 @@ import android.util.Log;
 
 
 public class FeedService {
-	FeedReaderDbHelper mDbHelper=null;
+	//FeedReaderDbHelper mDbHelper=null;
+	private SQLiteDatabase db;
 	public FeedService(Context context){
-		  mDbHelper=new FeedReaderDbHelper(context);
+		 db=FeedReaderDbHelper.getInstance(context);
 	}
 	
-	public  long add(String id,String title,String content){
+	public  long add(String id,String title,String content,String headimage){
 		
 		Log.e("mmm","添加数据开始");
 		// Gets the data repository in write mode
-		SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
 		// Create a new map of values, where column names are the keys
 		ContentValues values = new ContentValues();
 		values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID,id);
 		values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, title);
 		values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_SUBTITLE, content);
+		values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_HEADIMAGE,headimage);
 
 		// Insert the new row, returning the primary key value of the new row
 		long newRowId;
@@ -47,7 +48,6 @@ public class FeedService {
 	}
 	
 	public  Feed getById(String id){
-		SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
 		// Define a projection that specifies which columns from the database
 		// you will actually use after this query.
@@ -85,7 +85,6 @@ public class FeedService {
 	}
 	
 	public int deleteById(String id){
-		SQLiteDatabase db = mDbHelper.getReadableDatabase();
 		// Define 'where' part of query.
 		String selection = FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID + " = ?";
 		// Specify arguments in placeholder order.
@@ -95,8 +94,6 @@ public class FeedService {
 	}
 	
 	public int updateById(String id,String title,String content,String headimage){
-		SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
 		// New value for one column
 		ContentValues values = new ContentValues();
 		if(!StringUtils.isEmpty(title)){
@@ -126,8 +123,6 @@ public class FeedService {
 	}
 	public List<Feed> getList(){
 		Log.e("mmm","数据查询");
-		SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
 		// Define a projection that specifies which columns from the database
 		// you will actually use after this query.
 		String[] projection = {
@@ -177,7 +172,6 @@ public class FeedService {
 	public List<Feed> getListWithPage(int page,int count){
 		int start=(page-1)*count;
 		Log.e("mmm","分页数据查询");
-		SQLiteDatabase db = mDbHelper.getReadableDatabase();
 		String sql = "select * from entry limit ?,?";
 		String selectionArgs[]= new String[]{String.valueOf(start), String.valueOf(count)};
 		Cursor c = db.rawQuery(sql,selectionArgs);

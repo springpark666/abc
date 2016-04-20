@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import com.example.abc.bean.Feed;
 import com.example.abc.db.service.FeedService;
+import com.example.abc.dialog.CustomProgressDialog;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
@@ -19,12 +20,16 @@ import com.handmark.pulltorefresh.library.extras.SoundPullEventListener;
 
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -70,6 +75,7 @@ public class FeedActivity extends Activity implements OnClickListener{
 	
 	private Button bt_shipin,bt_paizhao;
 	private View view;
+	private Intent serviceIntent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -226,6 +232,10 @@ public class FeedActivity extends Activity implements OnClickListener{
 			intent.putExtras(bundle);
 			startActivityForResult(intent,REQUEST_ADD);//
 			
+			
+			//
+			//unbindService(conn);
+			
 			break;
 		case 1://删除
 			Toast.makeText(FeedActivity.this,"点击了删除",Toast.LENGTH_SHORT).show();
@@ -366,14 +376,57 @@ public class FeedActivity extends Activity implements OnClickListener{
 //		
 //		simpleAdapter.notifyDataSetChanged();
 		
-		Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
-		startActivityForResult(intent, REQUEST_ADD);
+		//Intent intent=new Intent(getApplicationContext(),AddEntryActivity.class);
+		//startActivityForResult(intent, REQUEST_ADD);
+		
+		
+		//加载提示
+		
+//		final ProgressDialog progressDialog=new ProgressDialog(FeedActivity.this);
+//		
+//		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//		progressDialog.setIcon(R.drawable.process);
+//		progressDialog.setMessage("加载中...");
+//		progressDialog.setCancelable(false);
+//		progressDialog.show();
+		
+		final CustomProgressDialog progressDialog=CustomProgressDialog.createDialog(FeedActivity.this);
+		progressDialog.show();
+		
+		new Thread(){
+			@Override
+			public void run() {
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				progressDialog.dismiss();
+			}
+		}.start();
+		
+		
+		//Intent intent2=new Intent("abcd");
+		//sendBroadcast(intent2);
+		
+		//serviceIntent=new Intent("testservice");
+		//bindService(serviceIntent, conn,BIND_AUTO_CREATE);
 		
 		//Intent intent=new Intent(FeedActivity.this,SelectPicPopActivity.class);
 		//startActivity(intent);
 		
 		//changePopupWindowState();
 	}
+	
+	ServiceConnection conn = new ServiceConnection(){
+		      public void onServiceConnected(ComponentName name, IBinder service) {  
+		          Log.e("mmm", "onServiceConnected");  
+		      }  
+		      public void onServiceDisconnected(ComponentName name) {  
+		          Log.e("mmm", "onServiceDisconnected");  
+		      }  
+	};  
+
 	
 	private void changePopupWindowState() {
         if (popupWindow.isShowing()) {

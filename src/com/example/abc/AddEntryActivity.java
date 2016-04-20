@@ -129,7 +129,7 @@ public class AddEntryActivity extends Activity {
 		if(StringUtils.isEmpty(eid)){
 			FeedService feedService=new FeedService(getApplicationContext());
 			String id=UUID.randomUUID().toString();
-			feedService.add(id,nicheng,personsign);
+			feedService.add(id,nicheng,personsign,imageName);
 			
 			Toast.makeText(getApplicationContext(),"添加成功",Toast.LENGTH_SHORT).show();
 			

@@ -11,14 +11,15 @@ public final class R {
     public static final class anim {
         public static final int fade_in=0x7f040000;
         public static final int fade_out=0x7f040001;
-        public static final int menu_fadein=0x7f040002;
-        public static final int menu_fadeout=0x7f040003;
-        public static final int push_bottom_in=0x7f040004;
-        public static final int push_buttom_out=0x7f040005;
-        public static final int slide_in_from_bottom=0x7f040006;
-        public static final int slide_in_from_top=0x7f040007;
-        public static final int slide_out_to_bottom=0x7f040008;
-        public static final int slide_out_to_top=0x7f040009;
+        public static final int loading_animation=0x7f040002;
+        public static final int menu_fadein=0x7f040003;
+        public static final int menu_fadeout=0x7f040004;
+        public static final int push_bottom_in=0x7f040005;
+        public static final int push_buttom_out=0x7f040006;
+        public static final int slide_in_from_bottom=0x7f040007;
+        public static final int slide_in_from_top=0x7f040008;
+        public static final int slide_out_to_bottom=0x7f040009;
+        public static final int slide_out_to_top=0x7f04000a;
     }
     public static final class attr {
         /**  BELOW HERE ARE DEPRECEATED. DO NOT USE. 
@@ -207,15 +208,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int menu_btn_word_mode_select=0x7f020020;
         public static final int mm_title_back=0x7f020021;
         public static final int open_icon=0x7f020022;
-        public static final int profile_normal=0x7f020023;
-        public static final int unread_count_bg=0x7f020024;
-        public static final int weixin_normal=0x7f020025;
-        public static final int wo=0x7f020026;
-        public static final int wp=0x7f020027;
+        public static final int process=0x7f020023;
+        public static final int process2=0x7f020024;
+        public static final int profile_normal=0x7f020025;
+        public static final int unread_count_bg=0x7f020026;
+        public static final int weixin_normal=0x7f020027;
+        public static final int wo=0x7f020028;
+        public static final int wp=0x7f020029;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f05000c;
-        public static final int action_settings=0x7f05003f;
+        public static final int action_settings=0x7f050041;
         public static final int activity_select_pic_pop=0x7f050033;
         public static final int back=0x7f050013;
         public static final int both=0x7f050003;
@@ -232,7 +235,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int disabled=0x7f050000;
         public static final int eid=0x7f05000f;
         public static final int feedid=0x7f050021;
-        public static final int fl_inner=0x7f05003a;
+        public static final int fl_inner=0x7f05003c;
         public static final int flip=0x7f050008;
         public static final int gridview=0x7f050009;
         public static final int gxqm=0x7f05001b;
@@ -244,6 +247,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int image2=0x7f05001f;
         public static final int imageView1=0x7f050027;
         public static final int iv_back=0x7f050014;
+        public static final int iv_image=0x7f05003a;
         public static final int large_image=0x7f050039;
         public static final int line=0x7f050036;
         public static final int manualOnly=0x7f050004;
@@ -257,11 +261,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pullFromEnd=0x7f050002;
         public static final int pullFromStart=0x7f050001;
         public static final int pullUpFromBottom=0x7f050006;
-        public static final int pull_to_refresh_image=0x7f05003b;
+        public static final int pull_to_refresh_image=0x7f05003d;
         public static final int pull_to_refresh_listview=0x7f050025;
-        public static final int pull_to_refresh_progress=0x7f05003c;
-        public static final int pull_to_refresh_sub_text=0x7f05003e;
-        public static final int pull_to_refresh_text=0x7f05003d;
+        public static final int pull_to_refresh_progress=0x7f05003e;
+        public static final int pull_to_refresh_sub_text=0x7f050040;
+        public static final int pull_to_refresh_text=0x7f05003f;
         public static final int re_avatar=0x7f050020;
         public static final int region=0x7f050028;
         public static final int regionvalue=0x7f050029;
@@ -271,6 +275,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int textView1=0x7f050016;
         public static final int tv_menu1=0x7f050037;
         public static final int tv_menu2=0x7f050038;
+        public static final int tv_text=0x7f05003b;
         public static final int tv_title=0x7f05000e;
         public static final int tv_unread=0x7f050031;
         public static final int view=0x7f050032;
@@ -299,8 +304,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_setting=0x7f030010;
         public static final int alertdialog=0x7f030011;
         public static final int largeimage=0x7f030012;
-        public static final int pull_to_refresh_header_horizontal=0x7f030013;
-        public static final int pull_to_refresh_header_vertical=0x7f030014;
+        public static final int progressdialog=0x7f030013;
+        public static final int pull_to_refresh_header_horizontal=0x7f030014;
+        public static final int pull_to_refresh_header_vertical=0x7f030015;
     }
     public static final class menu {
         public static final int add_entry=0x7f090000;
@@ -379,6 +385,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int CustomDialog=0x7f080006;
+        public static final int CustomProgressDialog=0x7f080007;
         /**  PopupWindow窗口动画 
          */
         public static final int MenuAnimationFade=0x7f080005;
